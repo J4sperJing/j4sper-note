@@ -5,5 +5,12 @@
     "**/public": true
   },
   "files.insertFinalNewline": true,
-  "files.trimTrailingWhitespace": false
+  "files.trimTrailingWhitespace": false,
+  "autoSnippet.snippets": [
+    {
+      "regex": "[\\\\/]content[\\\\/](?!(?:templates|private|\\.obsidian|\\.trash)[\\\\/])(?!.*[\\\\/](?:templates|private|\\.obsidian|\\.trash)[\\\\/]).*\\.md$",
+      "snippet": "J4sper new note",
+      "commands": ["workbench.action.files.save"]
+    }
+  ]
 }

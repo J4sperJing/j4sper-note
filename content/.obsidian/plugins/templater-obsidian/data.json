@@ -1,0 +1,30 @@
+{
+  "data_version": 2,
+  "templates_folder": "templates",
+  "trigger_on_file_creation_mode": "regex",
+  "file_templates": [
+    {
+      "regex": "^(?!(?:templates|private|\\.obsidian|\\.trash)(?:/|$))(?!.*\\/(?:templates|private|\\.obsidian|\\.trash)\\/).*\\.md$",
+      "template": "templates/new-note.md"
+    }
+  ],
+  "folder_templates": [],
+  "ignore_folders_on_creation": [
+    {
+      "folder": "templates"
+    },
+    {
+      "folder": "private"
+    },
+    {
+      "folder": ".obsidian"
+    },
+    {
+      "folder": ".trash"
+    }
+  ],
+  "auto_jump_to_cursor": false,
+  "startup_templates": [],
+  "user_scripts_folder": "",
+  "templates_pairs": []
+}

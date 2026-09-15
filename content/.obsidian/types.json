@@ -1,0 +1,10 @@
+{
+  "types": {
+    "title": "text",
+    "description": "text",
+    "tags": "tags",
+    "date": "date",
+    "draft": "checkbox",
+    "order": "number"
+  }
+}

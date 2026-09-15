@@ -1,0 +1,19 @@
+{
+  "J4sper new note": {
+    "scope": "markdown",
+    "prefix": "j4note",
+    "description": "新建公开笔记的草稿属性",
+    "body": [
+      "---",
+      "title: \"\"",
+      "description: \"\"",
+      "tags: []",
+      "date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+      "draft: true",
+      "order: null",
+      "---",
+      "",
+      "$0",
+    ],
+  },
+}

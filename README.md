@@ -47,7 +47,7 @@ npx quartz build --serve
 
 ## 公开范围
 
-仓库及网站公开。只有准备分享的内容才应提交；`draft: true` 仅让网页不显示，不能隐藏已提交的源码。`private/`、`.obsidian/`、`.trash/` 和 `.env` 已加入忽略规则。
+仓库及网站公开。只有准备分享的内容才应提交；`draft: true` 仅让网页不显示，不能隐藏已提交的源码。`private/`、`.trash/` 和 `.env` 已加入忽略规则；`.obsidian/` 仅同步下文列出的插件配置和属性类型。
 
 本项目基于 [Quartz v4.5.2](https://github.com/jackyzha0/quartz/tree/v4.5.2)，保留原项目 MIT 许可证。`docs/` 为框架文档，不会作为笔记发布。
 
@@ -66,9 +66,31 @@ order: 10
 
 此规则控制网站排序。Obsidian 文件列表和 VS Code 文件浏览器有各自的排序设置。
 
-## 新笔记自动生成属性（本机）
+## 新笔记自动生成属性（编辑器扩展）
 
-项目提供一个独立于编辑器的本地监听程序，支持 Obsidian 和 VS Code。新建并保存 `content` 下的 `.md` 后，等待文件写入稳定，约 2–3 秒会自动插入以下属性：
+模板和配置跟随这个仓库同步，不需要系统后台服务。
+
+### Obsidian
+
+1. 将 `content` 文件夹打开为笔记库。
+2. 安装并启用社区插件 **Git** 和 **Templater**。
+3. 在 **设置 → Templater → File creation** 中打开 **Trigger Templater on new file creation**。
+
+模板目录、匹配规则和属性类型已经配置。Templater 新版本将自动触发开关保存在当前设备，每台新设备需要手动打开一次。Templater 2.25.0 要求 Obsidian 1.13.0 或更新版本。
+
+Git 配置为每 10 分钟自动提交并推送，启动时拉取、每 10 分钟拉取。插件必须在 Obsidian 中运行；关闭该笔记库后不会自动同步。账号授权由本机 Git 单独管理。
+
+### VS Code
+
+1. 打开外层 `j4sper-note` 项目根目录。
+2. 安装推荐扩展 [Auto Snippet](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.auto-snippet)。
+3. 在资源管理器里于 `content` 下新建一个 `.md` 并打开，属性会自动插入并保存。
+
+规则也适用于打开一个空的 Markdown 文件。已有正文不会被覆盖；如果先在未命名文档中写了内容再保存，可使用 **Insert Snippet → J4sper new note** 手动插入属性。
+
+VS Code 的模板功能不依赖 Obsidian。提交与推送可在 VS Code 源代码管理中操作；如果希望沿用 Obsidian Git 自动同步，保持 Obsidian 打开同一 `content` 笔记库即可。
+
+### 默认属性
 
 ```yaml
 ---
@@ -81,22 +103,6 @@ order: null
 ---
 ```
 
-上面的日期只是示例；实际使用创建当天的本地日期。`title`、`description`、`tags` 和 `order` 留空。标题为空时，网站会使用文件名。发布前取消 `draft` 勾选或改为 `false`。
+日期按新建时的本地日期生成，上面只是示例。`title` 为空时，网站使用文件名。`order` 留空表示不指定顺序。`draft` 默认 `true`，发布前取消勾选或改为 `false`。自动提交到公开仓库的草稿源码仍然公开。
 
-默认项保存在 `note-defaults.json`。首次启用时，现有笔记保持原样。已有属性的文件、通过 Git 拉取的已跟踪文件，以及 `private`、`templates`、`.obsidian`、`.trash` 里的文件都不会被补写。仅在编辑器中创建的未保存文档还不是磁盘文件，需要先保存。
-
-在这台 Mac 的 `~/project/j4sper-note` 已配置登录后自动运行。首次克隆到另一台 Mac，或修改默认项后，可以在项目根目录运行：
-
-```sh
-/usr/bin/python3 scripts/install_note_defaults.py
-```
-
-运行状态和日志保存在忽略提交的 `.local/note-defaults/`。监听只修改本地文件，提交和推送由 Git 插件负责。
-
-如需停用本机监听：
-
-```sh
-launchctl bootout "gui/$(id -u)" "$HOME/Library/LaunchAgents/com.j4sper.note-defaults.plist"
-```
-
-Git 自动同步仅在 Obsidian 打开该笔记库、插件运行时工作。在 VS Code 写作时也可以保持这个 Obsidian 笔记库打开；或者用 VS Code 的源代码管理手动同步。
+Obsidian 模板位于 `content/templates/new-note.md`；VS Code 模板位于 `.vscode/j4sper-note.code-snippets`。模板、插件设置和属性类型一起同步；插件程序、凭据和个人窗口布局保持本地。

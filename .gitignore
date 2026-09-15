@@ -16,3 +16,20 @@ templates/
 !.env.example
 .local/
 __pycache__/
+
+# Portable editor configuration; credentials, plugin binaries and workspace state stay local.
+!content/.obsidian/
+content/.obsidian/*
+!content/.obsidian/community-plugins.json
+!content/.obsidian/types.json
+!content/.obsidian/plugins/
+content/.obsidian/plugins/*
+!content/.obsidian/plugins/obsidian-git/
+content/.obsidian/plugins/obsidian-git/*
+!content/.obsidian/plugins/obsidian-git/data.json
+!content/.obsidian/plugins/templater-obsidian/
+content/.obsidian/plugins/templater-obsidian/*
+!content/.obsidian/plugins/templater-obsidian/data.json
+!content/templates/
+content/templates/*
+!content/templates/new-note.md
