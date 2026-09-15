@@ -1,0 +1,195 @@
+@use "./base.scss";
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: 3px;
+  background: var(--secondary);
+  z-index: 100;
+}
+p,
+li {
+  line-height: 1.85;
+}
+article h2 {
+  margin-top: 2.4rem;
+}
+article h3 {
+  margin-top: 1.7rem;
+}
+article img {
+  border-radius: 12px;
+}
+.page-title {
+  font-size: 1.55rem;
+  letter-spacing: -0.055em;
+}
+.sidebar.left {
+  gap: 1.65rem;
+}
+.article-title {
+  line-height: 1.35;
+  letter-spacing: -0.035em;
+}
+.content-meta {
+  font-size: 0.85rem;
+}
+.search > .search-button {
+  background: transparent;
+  border-radius: 9px;
+  height: 2.2rem;
+}
+.explorer-content a {
+  font-size: 0.9rem;
+  line-height: 1.75;
+}
+.graph > .graph-outer {
+  border-radius: 12px;
+}
+.tag-link {
+  border-radius: 5px !important;
+  font-size: 0.8rem;
+}
+pre {
+  border-radius: 12px;
+}
+blockquote {
+  border-left-width: 3px;
+}
+footer {
+  border-top: 1px solid var(--lightgray);
+  padding-top: 1.5rem;
+}
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--secondary);
+  outline-offset: 4px;
+}
+
+.home-intro {
+  position: relative;
+  padding: 2.8rem 0 2.1rem;
+  border-bottom: 1px solid var(--lightgray);
+  background: radial-gradient(ellipse at 92% 25%, var(--highlight), transparent 58%);
+  .home-kicker {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: var(--secondary);
+    font-size: 0.67rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    span {
+      width: 7px;
+      height: 7px;
+      background: var(--secondary);
+      border-radius: 50%;
+    }
+  }
+  h1 {
+    font-size: clamp(2.25rem, 3.3vw, 3.4rem);
+    line-height: 1.4;
+    letter-spacing: -0.05em;
+    margin: 1.7rem 0 1.3rem;
+    font-weight: 650;
+    em {
+      color: var(--secondary);
+      font-style: normal;
+    }
+  }
+  .home-description {
+    font-size: 1rem;
+    line-height: 1.9;
+    color: var(--darkgray);
+  }
+  .home-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 1.8rem;
+    a {
+      display: inline-flex;
+      align-items: center;
+      gap: 1.15rem;
+      padding: 0.8rem 1.15rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+    }
+    a.home-primary {
+      background: var(--secondary);
+      color: var(--light);
+    }
+    a.home-primary:hover {
+      background: var(--tertiary);
+    }
+    a.home-secondary {
+      background: transparent;
+      border: 1px solid var(--lightgray);
+    }
+  }
+  .home-caption {
+    margin-top: 2.4rem;
+    font-size: 0.59rem;
+    letter-spacing: 0.15em;
+    color: var(--gray);
+  }
+}
+article.home {
+  margin-top: 2rem;
+}
+article.home h2 {
+  font-size: 1.05rem;
+  margin-top: 1.5rem;
+}
+article.home p {
+  font-size: 0.95rem;
+}
+.center > .recent-notes {
+  margin: 2rem 0;
+  > h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+  }
+  .recent-ul {
+    padding: 0;
+  }
+  .recent-li {
+    padding: 1.15rem 0;
+    margin: 0;
+    border-bottom: 1px solid var(--lightgray);
+  }
+  .recent-li h3 {
+    font-size: 1rem;
+    margin: 0 0 0.5rem;
+  }
+  .recent-li .meta {
+    font-size: 0.78rem;
+  }
+}
+@media (max-width: 800px) {
+  .home-intro {
+    padding-top: 1.25rem;
+  }
+  .home-intro h1 {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+  .page-title {
+    font-size: 1.3rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

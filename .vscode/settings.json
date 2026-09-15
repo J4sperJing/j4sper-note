@@ -1,0 +1,9 @@
+{
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/.quartz-cache": true,
+    "**/public": true
+  },
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": false
+}
