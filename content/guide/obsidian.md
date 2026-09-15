@@ -1,6 +1,7 @@
 ---
 title: 在 Obsidian 中写作
 description: 将 content 打开为笔记库，保留熟悉的 Markdown 与双链体验。
+draft: true
 ---
 
 ## 打开笔记库

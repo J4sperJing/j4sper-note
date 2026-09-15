@@ -1,6 +1,7 @@
 ---
 title: 写作与发布
 description: 三种方式更新笔记，提交后自动生成网站。
+draft: true
 ---
 
 ## 方式一：在 GitHub 网页上传
