@@ -3,14 +3,6 @@
 body {
   -webkit-font-smoothing: antialiased;
 }
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0 0 auto;
-  height: 3px;
-  background: var(--secondary);
-  z-index: 100;
-}
 p,
 li {
   line-height: 1.85;
