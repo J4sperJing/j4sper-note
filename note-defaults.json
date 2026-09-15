@@ -1,0 +1,12 @@
+{
+  "contentDirectory": "content",
+  "ignoredFolders": [".obsidian", ".trash", "templates", "private"],
+  "properties": {
+    "title": "",
+    "description": "",
+    "tags": [],
+    "date": "$today",
+    "draft": true,
+    "order": null
+  }
+}

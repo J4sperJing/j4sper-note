@@ -19,6 +19,7 @@ export type ContentDetails = {
   richContent?: string
   date?: Date
   description?: string
+  order?: number
 }
 
 interface Options {
@@ -107,6 +108,7 @@ export const ContentIndex: QuartzEmitterPlugin<Partial<Options>> = (opts) => {
             slug,
             filePath: file.data.relativePath!,
             title: file.data.frontmatter?.title!,
+            order: file.data.frontmatter?.order as number | undefined,
             links: file.data.links ?? [],
             tags: file.data.frontmatter?.tags ?? [],
             content: file.data.text ?? "",

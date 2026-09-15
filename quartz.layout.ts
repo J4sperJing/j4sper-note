@@ -2,6 +2,7 @@ import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
 import { QuartzComponent } from "./quartz/components/types"
 import HomeIntro from "./quartz/components/HomeIntro"
+import { compareExplorerNotes } from "./quartz/util/noteOrder"
 
 const home = (component: QuartzComponent) =>
   Component.ConditionalRender({ component, condition: (page) => page.fileData.slug === "index" })
@@ -42,7 +43,11 @@ const left: PageLayout["left"] = [
       { Component: Component.ReaderMode() },
     ],
   }),
-  Component.Explorer({ folderClickBehavior: "link", folderDefaultState: "open" }),
+  Component.Explorer({
+    folderClickBehavior: "link",
+    folderDefaultState: "open",
+    sortFn: compareExplorerNotes,
+  }),
 ]
 
 export const defaultContentPageLayout: PageLayout = {

@@ -6,6 +6,7 @@ import toml from "toml"
 import { FilePath, FullSlug, getFileExtension, slugifyFilePath, slugTag } from "../../util/path"
 import { QuartzPluginData } from "../vfile"
 import { i18n } from "../../i18n"
+import { normalizeNoteOrder } from "../../util/noteOrder"
 
 export interface Options {
   delimiters: string | [string, string]
@@ -79,6 +80,10 @@ export const FrontMatter: QuartzTransformerPlugin<Partial<Options>> = (userOpts)
 
             const tags = coerceToArray(coalesceAliases(data, ["tags", "tag"]))
             if (tags) data.tags = [...new Set(tags.map((tag: string) => slugTag(tag)))]
+
+            const order = normalizeNoteOrder(data.order)
+            if (order === undefined) delete data.order
+            else data.order = order
 
             const aliases = coerceToArray(coalesceAliases(data, ["aliases", "alias"]))
             if (aliases) {
